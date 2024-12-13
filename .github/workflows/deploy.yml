@@ -48,7 +48,8 @@ jobs:
           git diff --exit-code || echo "There are changes to commit"
     
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/consuming-angular-app
       
