@@ -39,13 +39,11 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --base-href=/consuming-angular-app/
 
-      - name: Check if www folder exists
-        run: |
-          ls -la src
-
-      - name: Check if there are changes
-        run: |
-          git diff --exit-code || echo "There are changes to commit"
+      - name: Upload build artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ./dist/consuming-angular-app
     
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
